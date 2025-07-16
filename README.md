@@ -1,119 +1,93 @@
-# 🐳 DockerImageHub - CI/CD FastAPI Template
+# 🌍 Flask Hello World - Dockerized App
 
-A minimal ⚡ FastAPI project, fully containerized with **Docker**, integrated with **CI/CD workflows via GitHub Actions**, and supported by **unit tests** — perfect for scalable microservice deployment and DevOps readiness! 🧑‍💻
+A minimal 🧪 **Flask web app** that returns "Hello World!" — containerized with **Docker** and ready for CI/CD workflows!
 
 ---
 
 ## 🚀 Tech Stack
 
-- 🐍 **Python 3.10+**
-- ⚡ **FastAPI**
-- 🧪 **Pytest**
-- 🐳 **Docker**
-- 🤖 **CI/CD**: GitHub Actions
-- 🔬 **Unit Testing**
+- 🐍 Python
+- 🌐 Flask
+- 🐳 Docker
+- 🤖 GitHub Actions (Optional for CI/CD)
 
 ---
 
-## 🔧 Workflows
+## 📝 Source Code
 
-📁 `.github/workflows/cicd.yml`  
-CI/CD workflow runs:
+```python
+from flask import Flask
 
-- ✅ Lint check
-- 🧪 Unit test via `pytest`
-- 🐳 Docker build
+app = Flask(__name__)
 
-```yaml
-# Sample steps (see full in repo)
-- name: Test with pytest
-  run: |
-    pytest test_app.py
-- name: Build Docker image
-  run: |
-    docker build -t dockerimagehub:latest .
+@app.route("/")
+def home():
+    return "Hello World!"
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
 ```
 
 ---
 
-## 📦 Folder Structure
+## 📁 File Structure
 
 ```bash
-dockerimagehub/
-├── .github/
-│   └── workflows/
-│       └── cicd.yml         # CI/CD Workflow
-├── .gitignore
-├── app.py                   # FastAPI Application
-├── Dockerfile               # Docker Setup
-├── requirements.txt         # Project Dependencies
-├── test_app.py              # Unit Tests
-└── README.md                # Project Overview
+.
+├── app.py              # Flask app
+├── Dockerfile          # Docker image instructions
+├── requirements.txt    # Flask dependency
+├── test_app.py         # Optional - unit test
+└── README.md           # Project overview
 ```
 
 ---
 
-## 🧪 Running the Project
+## 🐳 Docker Instructions
 
-### 🖥️ Locally
+### 🔧 Build Docker Image
 
 ```bash
-pip install -r requirements.txt
-uvicorn app:app --reload
+docker build -t flask-hello-app .
 ```
 
-### 🐳 Docker
+### ▶️ Run the App
 
 ```bash
-docker build -t dockerimagehub .
-docker run -p 8000:8000 dockerimagehub
+docker run -p 5000:5000 flask-hello-app
+```
+
+Then visit: [http://localhost:5000](http://localhost:5000)
+
+---
+
+## ✅ Example Output
+
+```bash
+$ curl http://localhost:5000
+Hello World!
 ```
 
 ---
 
-## ✅ Example API Response
+## 🔁 Optional CI/CD Workflow
 
-```bash
-GET http://localhost:8000/
-
-{
-  "message": "Hello, Dockerized FastAPI!"
-}
-```
-
----
-
-## 🔁 CI/CD Automation
-
-Every push triggers:
-
-1. ✅ **Code lint & test**
-2. 🐳 **Docker build validation**
-3. 💥 Ideal for container-based deployment pipelines
+You can add `.github/workflows/flask-ci.yml` to automate testing & docker build on push.
 
 ---
 
 ## 💼 For Recruiters & Interviewers
 
-📌 This repository demonstrates:
+This mini project demonstrates:
 
-- Proficiency with **FastAPI**
-- Strong understanding of **CI/CD pipelines**
-- Experience with **Docker containers**
-- Writing & running **automated unit tests**
-- Building **clean, production-ready APIs**
-
-⭐ Ideal for **backend**, **DevOps**, or **platform engineering** roles.
+- Dockerizing a Python Flask app
+- Exposing endpoints via container
+- CI/CD readiness via GitHub Actions
+- Basics of containerized microservices
 
 ---
 
-## 📸 UI or Terminal Screenshot (Optional)
-
-> _You can add a screenshot here showing terminal running FastAPI in Docker or GitHub Actions run badge!_
-
----
-
-## 🤝 Let's Connect!
+## 🤝 Connect with Me
 
 - 🔗 [LinkedIn](https://www.linkedin.com/in/aparna-k-628005167/)
 - 💻 [GitHub](https://github.com/Aparna-k246)
@@ -122,4 +96,4 @@ Every push triggers:
 
 ## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT License – free to use, share & modify.
